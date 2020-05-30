@@ -112,7 +112,7 @@ public class FoodDao {
 	}
 	
 	public void getCibiPerPorzione(Map<Integer, Food> mappaCibi, Integer porzioni){
-		String sql = "SELECT food.food_code, food.display_name, t1.cnt FROM (SELECT food_code, COUNT(*) AS cnt FROM `portion` GROUP BY food_code) AS t1, food WHERE food.food_code=t1.food_code AND t1.cnt<=? ORDER BY food.display_name" ;
+		String sql = "SELECT food.food_code, food.display_name, t1.cnt FROM (SELECT food_code, COUNT(*) AS cnt FROM `portion` GROUP BY food_code) AS t1, food WHERE food.food_code=t1.food_code AND t1.cnt=? ORDER BY food.display_name" ;
 		
 		try {
 			Connection conn = DBConnect.getConnection() ;

@@ -70,6 +70,7 @@ public class FoodController {
 				}
 			});
 			
+			boxFood.getItems().clear();
 			boxFood.getItems().addAll(listaCibi);
 			boxFood.setValue(listaCibi.get(0));
 			
@@ -91,7 +92,7 @@ public class FoodController {
 			txtResult.appendText("Non hai almeno 5 ingredienti per questo cibo \n");
 			return;
 		}
-		txtResult.appendText(String.format("Per il cibo %s i 5 ingredienti più calori sono: \n", cibo.getDisplay_name()));
+		txtResult.appendText(String.format("Per il cibo %s i 5 ingredienti più calorici sono: \n", cibo.getDisplay_name()));
 		for(Food f: model.best(cibo)) {
 			txtResult.appendText(f+"\n");
 		}
