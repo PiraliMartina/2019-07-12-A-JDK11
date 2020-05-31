@@ -18,6 +18,7 @@ public class Model {
 	private Map<Integer, Food> mappaCibi;
 	private FoodDao dao;
 	private Graph<Food, DefaultWeightedEdge> grafo;
+	private Simulator sim;
 
 	public Model() {
 		dao = new FoodDao();
@@ -71,5 +72,14 @@ public class Model {
 		}
 		return best;
 	}
+	
+	public String simula(int k, Food cibo) {
+		sim = new Simulator(grafo, k, cibo);
+		sim.init();
+		sim.run();
+		return String.format("Sono stati preparati %d cibi in %d minuti", sim.getNumCibi(), sim.getTempoTotale());
+	}
+	
+	
 
 }

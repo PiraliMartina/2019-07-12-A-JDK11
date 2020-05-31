@@ -76,6 +76,7 @@ public class FoodController {
 			
 			boxFood.setDisable(false);
 			btnCalorie.setDisable(false);
+			btnSimula.setDisable(false);
 
 		} catch (NumberFormatException e) {
 			txtResult.setText("Numero porzioni non valido");
@@ -100,8 +101,14 @@ public class FoodController {
 
 	@FXML
 	void doSimula(ActionEvent event) {
-		txtResult.clear();
-		txtResult.appendText("Simulazione...");
+		try {
+			int k = Integer.parseInt(txtK.getText());
+			txtResult.setText(model.simula(k, boxFood.getValue()));
+		} catch (NumberFormatException e) {
+			txtResult.setText("Non hai inserito un numero");
+		} catch (Exception e) {
+			txtResult.setText("ERRORE!!!");
+		}
 	}
 
 	@FXML // This method is called by the FXMLLoader when initialization is complete
